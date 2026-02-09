@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Pharaoh Agency</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg:#000;
+  --primary:#ffffff;
+  --muted:#afaa14;
+}
+
+* {
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Poppins',sans-serif;
+}
+
+body {
+  background:var(--bg);
+  color:var(--primary);
+  overflow:hidden;
+}
+
+/* HEADER */
+header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:25px 60px;
+}
+
+nav a {
+  margin:0 18px;
+  text-decoration:none;
+  color:var(--primary);
+  cursor:pointer;
+  position:relative;
+}
+
+nav a::after {
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-6px;
+  width:0;
+  height:2px;
+  background:var(--primary);
+  transition:.3s;
+}
+
+nav a:hover::after {
+  width:100%;
+}
+
+/* PAGES */
+.page {
+  display:none;
+  height:80vh;
+  padding:0 60px;
+}
+
+.page.active {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  animation:pageFade .6s ease;
+}
+
+.hero-logo {
+  width:180px;
+  margin-bottom:25px;
+  opacity:0;
+  animation:itemUp .6s ease .2s forwards;
+}
+
+h1 {
+  font-size:70px;
+  margin-bottom:20px;
+  opacity:0;
+  animation:itemUp .6s ease .35s forwards;
+}
+
+p {
+  max-width:600px;
+  color:var(--muted);
+  margin-bottom:30px;
+  opacity:0;
+  animation:itemUp .6s ease .5s forwards;
+}
+
+.btn {
+  padding:14px 34px;
+  border:1px solid var(--primary);
+  background:none;
+  color:var(--primary);
+  cursor:pointer;
+  transition:.3s;
+  opacity:0;
+  animation:itemUp .6s ease .65s forwards;
+}
+
+.btn:hover {
+  background:var(--primary);
+  color:#000;
+  transform:scale(1.05);
+}
+
+/* PORTFOLIO */
+.portfolio-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:20px;
+  width:100%;
+  margin-top:40px;
+}
+
+.portfolio-grid img {
+  width:100%;
+  height:180px;
+  object-fit:cover;
+  border-radius:10px;
+  opacity:0;
+  animation:zoomIn .6s ease forwards;
+}
+
+.portfolio-grid img:nth-child(1){animation-delay:.1s}
+.portfolio-grid img:nth-child(2){animation-delay:.2s}
+.portfolio-grid img:nth-child(3){animation-delay:.3s}
+.portfolio-grid img:nth-child(4){animation-delay:.4s}
+.portfolio-grid img:nth-child(5){animation-delay:.5s}
+.portfolio-grid img:nth-child(6){animation-delay:.6s}
+.portfolio-grid img:nth-child(7){animation-delay:.7s}
+.portfolio-grid img:nth-child(8){animation-delay:.8s}
+.portfolio-grid img:nth-child(9){animation-delay:.9s}
+.portfolio-grid img:nth-child(10){animation-delay:1s}
+
+/* FOOTER */
+footer {
+  padding:40px 60px;
+  border-top:1px solid #111;
+  display:flex;
+  justify-content:space-between;
+  color:var(--muted);
+}
+
+/* ANIMATIONS */
+@keyframes pageFade {
+  from {opacity:0}
+  to {opacity:1}
+}
+
+@keyframes itemUp {
+  from {
+    opacity:0;
+    transform:translateY(25px);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity:0;
+    transform:scale(.85);
+  }
+  to {
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+/* MOBILE */
+@media(max-width:768px){
+  header{padding:20px}
+  .page{padding:0 20px}
+  h1{font-size:42px}
+  .hero-logo{width:140px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a onclick="goPage('home')">HOME</a>
+    <a onclick="goPage('about')">ABOUT US</a>
+    <a onclick="goPage('services')">SERVICES</a>
+    <a onclick="goPage('portfolio')">PORTFOLIO</a>
+    <a onclick="goPage('contact')">CONTACT</a>
+  </nav>
+</header>
+
+<!-- HOME -->
+<section class="page active" id="home">
+  <img src="images/2d3c57ce-522f-4443-b285-5f76615cf05b.jpg" class="hero-logo">
+  <h1>Build Your Identity</h1>
+  <p>We create powerful brands with strong visual identity.</p>
+  <button class="btn">BOOK NOW</button>
+</section>
+
+<!-- ABOUT -->
+<section class="page" id="about">
+  <h1>About Us</h1>
+  <p>
+    Pharaoh Agency helps brands grow through creative design,
+    professional content, and modern digital solutions.
+  </p>
+</section>
+
+<!-- SERVICES -->
+<section class="page" id="services">
+  <h1>Our Services</h1>
+  <p>
+    Graphic Design<br>
+    Video Editing<br>
+    Web Development<br>
+    Content Creation
+  </p>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="page" id="portfolio">
+  <h1>Our Portfolio</h1>
+  <p>Some of our latest creative work.</p>
+
+  <div class="portfolio-grid">
+    <img src="images/SAUVAGE (8).jpg">
+    <img src="images/231.jpg">
+    <img src="images/Gradien Soccer Match Day Instagram Story - Made with PosterMyWall.jpg">
+    <img src="images/2d3c57ce-522f-4443-b285-5f76615cf05b.jpg">
+    <img src="images/electrical services (17).jpg">
+    <img src="images/ERTSRES.jpg">
+    <img src="images/PIXELATE PLUS (30).jpg">
+    <img src="images/SAUVAGE (11).jpg">
+    <img src="images/SAUVAGE (12).jpg">
+    <img src="images/SAUVAGE (14).jpg">
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="page" id="contact">
+  <h1>Contact Us</h1>
+  <p>
+    WhatsApp: 01211807019<br>
+    Email: ziadtamer272010<br>
+    Facebook: Pharaoh Agency<br>
+    Instagram: PharaohAgency
+  </p>
+</section>
+
+<footer>
+  <div>© 2026 Pharaoh Agency</div>
+  <div>Build Your Identity</div>
+</footer>
+
+<script>
+function goPage(id){
+  document.querySelectorAll('.page').forEach(p=>{
+    p.classList.remove('active');
+    p.querySelectorAll('*').forEach(el=>{
+      el.style.animation='none';
+      el.offsetHeight;
+      el.style.animation='';
+    });
+  });
+  document.getElementById(id).classList.add('active');
+}
+</script>
+
+</body>
+</html>
